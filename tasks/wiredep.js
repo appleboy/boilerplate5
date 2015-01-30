@@ -16,7 +16,7 @@ gulp.task('wiredep', function() {
 
     var tplDeps = gulp.src('resources/templates/**/*.blade.php')
         .pipe(wiredep({
-            ignorePath: '../../public/',
+            ignorePath: '../../public',
             exclude: ['modernizr']
         }))
         .pipe(gulp.dest('resources/views'));
