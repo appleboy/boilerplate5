@@ -18,7 +18,7 @@
 <body>
 <div class="container">
     <div class="content">
-        <h1 class="title">Laravel 4</h1>
+        <h1 class="title">Laravel 5</h1>
         <div class="quote">{{ Inspiring::quote() }}</div>
     </div>
 </div>
