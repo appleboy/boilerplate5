@@ -1,6 +1,6 @@
 {
 	"name": "jaceju/boilerplate5",
-	"description": "A boilerplate of Laravel 4.2 and Gulp for initializing your full stack project.",
+	"description": "A boilerplate of Laravel 5 and Gulp for initializing your full stack project.",
 	"keywords": ["framework", "laravel", "gulp"],
 	"license": "MIT",
 	"type": "project",
