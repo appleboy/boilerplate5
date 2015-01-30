@@ -1,46 +1,35 @@
+<!doctype html>
 <html>
-	<head>
-		<link href='http://fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
+<head>
+<meta charset="UTF-8">
+<title>Laravel PHP Framework</title>
+<link rel="shortcut icon" href="/favicon.png">
 
-		<style>
-			body {
-				margin: 0;
-				padding: 0;
-				width: 100%;
-				height: 100%;
-				color: #B0BEC5;
-				display: table;
-				font-weight: 100;
-				font-family: 'Lato';
-			}
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100">
+<!-- build:css css/vendor.css -->
+<!-- bower:css -->
+<!-- endbower -->
+<!-- endbuid -->
 
-			.container {
-				text-align: center;
-				display: table-cell;
-				vertical-align: middle;
-			}
+<!-- build:css css/main.css -->
+<link rel="stylesheet" href="styles/main.css">
+<!-- endbuild -->
+</head>
+<body>
+<div class="container">
+    <div class="content">
+        <h1 class="title">Laravel 4</h1>
+        <div class="quote">{{ Inspiring::quote() }}</div>
+    </div>
+</div>
+<!-- build:js js/vendor.js -->
+<!-- bower:js -->
+<!-- endbower -->
+<!-- endbuid -->
 
-			.content {
-				text-align: center;
-				display: inline-block;
-			}
-
-			.title {
-				font-size: 96px;
-				margin-bottom: 40px;
-			}
-
-			.quote {
-				font-size: 24px;
-			}
-		</style>
-	</head>
-	<body>
-		<div class="container">
-			<div class="content">
-				<div class="title">Laravel 5</div>
-				<div class="quote">{{ Inspiring::quote() }}</div>
-			</div>
-		</div>
-	</body>
+<!-- build:js js/index.js -->
+<script src="scripts/index.js"></script>
+<!-- endbuid -->
+</body>
 </html>
+
