@@ -16,7 +16,7 @@ gulp.task('clean:cache', function (cb) {
 
 // Clean
 gulp.task('clean', ['clean:develop', 'clean:cache'], function(cb) {
-    del(['public/css', 'public/js', 'public/fonts', 'public/images'], cb);
+    del(['public/css', 'public/js', 'public/fonts', 'public/images', 'docs/styleguide', 'docs/api'], cb);
 });
 
 // Clean temporary assets

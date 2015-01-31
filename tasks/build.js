@@ -12,7 +12,7 @@ gulp.task('build', ['wiredep', 'styles', 'scripts', 'images', 'fonts'], function
         .pipe(assets)
         .pipe($.if('*.js', $.uglify({ preserveComments: saveLicense })))
         .pipe($.if('*.css', $.csso()))
-        .pipe(gulp.dest('styleguide'))
+        .pipe(gulp.dest('docs/styleguide'))
         .pipe($.rev())
         .pipe(gulp.dest('public'))
         .pipe(assets.restore())
