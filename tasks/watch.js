@@ -2,29 +2,15 @@
 
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
-
-var templateDir = 'resources/templates';
-var templateFiles = templateDir + '/**/*.blade.php';
-
-var appFiles = 'app/**/*.php';
-
-var assetsDir = 'resources/assets';
-
-var scriptSrcDir = assetsDir + '/scripts';
-var scriptSrcFiles = scriptSrcDir + '/**/*.js';
-
-var styleSrcDir = assetsDir + '/styles';
-var styleSrcFiles = styleSrcDir + '/**/*.scss';
-
-var imageSrcDir = assetsDir + '/images';
+var config = require('./config');
 
 // Watch
 gulp.task('watch', ['prepare'], function() {
     gulp.start('serve');
     gulp.start('livereload');
-    gulp.watch([templateFiles, 'bower.json'], ['wiredep']);
-    gulp.watch(appFiles, ['phpunit']);
-    gulp.watch(scriptSrcFiles, ['scripts']);
-    gulp.watch(styleSrcFiles, ['styles']);
-    gulp.watch(imageSrcDir + '/**/*', ['images']);
+    gulp.watch([config.templateSrcFiles, 'bower.json'], ['wiredep']);
+    gulp.watch(config.appFiles, ['phpunit']);
+    gulp.watch(config.scriptSrcFiles, ['scripts']);
+    gulp.watch(config.styleSrcFiles, ['styles']);
+    gulp.watch(config.imageSrcDir + '/**/*', ['images']);
 });

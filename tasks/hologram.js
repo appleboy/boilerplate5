@@ -2,12 +2,12 @@
 
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
-var fs = require('fs');
+var config = require('./config');
 
 // Style Guide / UI Patterns
 gulp.task('hologram', function() {
     return gulp.src('hologram.yml')
         .pipe($.hologram({
-            bundler: fs.existsSync('.bundle')
+            bundler: config.useBundle
         }));
 });

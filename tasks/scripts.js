@@ -2,18 +2,13 @@
 
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
-
-var assetsDir = 'resources/assets';
-
-var scriptSrcDir = assetsDir + '/scripts';
-var scriptSrcFiles = scriptSrcDir + '/**/*.js';
-var scriptDestDir = 'public/scripts';
+var config = require('./config');
 
 // Scripts
 gulp.task('scripts', function() {
-    return gulp.src(scriptSrcFiles)
+    return gulp.src(config.scriptSrcFiles)
         .pipe($.jshint('.jshintrc'))
         .pipe($.jshint.reporter('jshint-stylish'))
-        .pipe(gulp.dest(scriptDestDir))
+        .pipe(gulp.dest(config.scriptDestDir))
         .pipe($.size({ title: 'scripts' }));
 });

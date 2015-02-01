@@ -3,24 +3,16 @@
 var gulp = require('gulp');
 var del = require('del');
 var $ = require('gulp-load-plugins')();
-
-var viewDir = 'resources/views';
-
-var scriptDestDir = 'public/scripts';
-var styleDestDir = 'public/styles';
-var styleCacheDir = '.sass-cache';
-
-var scriptBuildDir = 'public/js';
-var styleBuildDir = 'public/css';
-var imageBuildDir = 'public/images';
-var fontBuildDir = 'public/fonts';
-
-var styleGuideDir = 'docs/styleguide';
-var apiDocDir = 'docs/api';
+var config = require('./config');
 
 // Clean
 gulp.task('clean:develop', function(cb) {
-    del([viewDir, scriptDestDir, styleDestDir, styleCacheDir], cb);
+    del([
+        config.viewDir,
+        config.scriptDestDir,
+        config.styleDestDir,
+        config.styleCacheDir
+    ], cb);
 });
 
 // Clean Cache
@@ -30,10 +22,23 @@ gulp.task('clean:cache', function (cb) {
 
 // Clean
 gulp.task('clean', ['clean:develop', 'clean:cache'], function(cb) {
-    del([scriptBuildDir, styleBuildDir, imageBuildDir, fontBuildDir, styleGuideDir, apiDocDir], cb);
+    del([
+        config.scriptBuildDir,
+        config.styleBuildDir,
+        config.imageBuildDir,
+        config.fontBuildDir,
+        config.styleGuideDir,
+        config.apiDocDir
+    ], cb);
 });
 
 // Clean temporary assets
 gulp.task('clean:temporary', function (cb) {
-    del([viewDir + '/js', viewDir + '/css', scriptDestDir, styleDestDir, styleCacheDir], cb);
+    del([
+        config.viewDir + '/js',
+        config.viewDir + '/css',
+        config.scriptDestDir,
+        config.styleDestDir,
+        config.styleCacheDir
+    ], cb);
 });

@@ -2,10 +2,7 @@
 
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
-
-var templateExt = '.php';
-var viewDir = 'resources/views';
-var styleGuideDir = 'docs/styleguide';
+var config = require('./config');
 
 // Build
 gulp.task('build', ['wiredep', 'styles', 'scripts', 'images', 'fonts'], function() {
@@ -13,17 +10,17 @@ gulp.task('build', ['wiredep', 'styles', 'scripts', 'images', 'fonts'], function
     var saveLicense = require('uglify-save-license');
     var assets = $.useref.assets({ searchPath: 'public' });
 
-    return gulp.src(viewDir + '/**/*' + templateExt)
+    return gulp.src(config.viewDir + '/**/*' + config.templateExt)
         .pipe(assets)
         .pipe($.if('*.js', $.uglify({ preserveComments: saveLicense })))
         .pipe($.if('*.css', $.csso()))
-        .pipe(gulp.dest(styleGuideDir))
+        .pipe(gulp.dest(config.styleGuideDir))
         .pipe($.rev())
         .pipe(gulp.dest('public'))
         .pipe(assets.restore())
         .pipe($.useref())
         .pipe($.revReplace({
-            replaceInExtensions: [templateExt]
+            replaceInExtensions: [config.templateExt]
         }))
-        .pipe(gulp.dest(viewDir));
+        .pipe(gulp.dest(config.viewDir));
 });

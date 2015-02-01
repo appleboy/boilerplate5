@@ -2,21 +2,15 @@
 
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
-var fs = require('fs');
-
-var assetsDir = 'resources/assets';
-
-var styleSrcDir = assetsDir + '/styles';
-var styleSrcMainFiles = styleSrcDir + '/*.scss';
-var styleDestDir = 'public/styles';
+var config = require('./config');
 
 // Styles
 gulp.task('styles', function() {
-    return gulp.src(styleSrcMainFiles)
+    return gulp.src(config.styleSrcMainFiles)
         .pipe($.plumber())
         .pipe($.rubySass({
             container: (+new Date) + '', // bug of temporary path generating.
-            bundleExec: fs.existsSync('.bundle'),
+            bundleExec: config.useBundle,
             style: 'expanded',
             precision: 10
         }))
@@ -24,6 +18,6 @@ gulp.task('styles', function() {
             browsers: ['last 2 versions'],
             cascade: false
         }))
-        .pipe(gulp.dest(styleDestDir))
+        .pipe(gulp.dest(config.styleDestDir))
         .pipe($.size({ title: 'styles' }));
 });

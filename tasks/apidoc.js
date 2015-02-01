@@ -2,14 +2,12 @@
 
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
-
-var appDir = 'app';
-var apiDocDir = 'docs/api';
+var config = require('./config');
 
 // Api Doc
 gulp.task('apidoc', function(){
     $.apidoc.exec({
-        src: appDir + '/',
-        dest: apiDocDir
+        src: config.appDir + '/',
+        dest: config.apiDocDir
     });
 });
