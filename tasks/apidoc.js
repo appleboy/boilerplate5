@@ -3,10 +3,13 @@
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 
+var appDir = 'app';
+var apiDocDir = 'docs/api';
+
 // Api Doc
 gulp.task('apidoc', function(){
     $.apidoc.exec({
-        src: "app/",
-        dest: "docs/api/"
+        src: appDir + '/',
+        dest: apiDocDir
     });
 });
