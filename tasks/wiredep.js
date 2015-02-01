@@ -3,23 +3,34 @@
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 
+var bowerDir = 'public/bower_components';
+
+var assetsDir = 'resources/assets';
+var styleSrcDir = assetsDir + '/styles';
+var styleSrcMainFiles = styleSrcDir + '/*.scss';
+
+var templateExt = '.php';
+var templateDir = 'resources/templates';
+var templateFiles = templateDir + '/**/*' + templateExt;
+var viewDir = 'resources/views';
+
 // Inject bower components
 gulp.task('wiredep', function() {
     var wiredep = require('wiredep').stream;
     var merge = require('merge-stream');
 
-    var styleDeps = gulp.src('assets/styles/*.scss')
+    var styleDeps = gulp.src(styleSrcMainFiles)
         .pipe(wiredep({
-            directory: 'public/bower_components'
+            directory: bowerDir
         }))
-        .pipe(gulp.dest('assets/styles'));
+        .pipe(gulp.dest(styleSrcDir));
 
-    var tplDeps = gulp.src('resources/templates/**/*.blade.php')
+    var tplDeps = gulp.src(templateFiles)
         .pipe(wiredep({
             ignorePath: '../../public',
             exclude: ['modernizr']
         }))
-        .pipe(gulp.dest('resources/views'));
+        .pipe(gulp.dest(viewDir));
 
     return merge(styleDeps, tplDeps);
 });
